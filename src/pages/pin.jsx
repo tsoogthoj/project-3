@@ -12,16 +12,21 @@ class Pin extends Component {
         dot3: "dot",
         dot4: "dot"
     };
+    
+    checkPinAuth = () => {
+
+    };
 
     checkPin = () => {
         if (this.state.passcode.length === 1) {
-            this.setState({ dot1: "dot white" })
+            this.setState({ dot1: "dot white" });
         } else if (this.state.passcode.length === 2) {
-            this.setState({ dot2: "dot white" })
+            this.setState({ dot2: "dot white" });
         } else if (this.state.passcode.length === 3) {
-            this.setState({ dot3: "dot white" })
+            this.setState({ dot3: "dot white" });
         } else if (this.state.passcode.length === 4) {
-            this.setState({ dot4: "dot white" })
+            this.setState({ dot4: "dot white" });
+            this.checkPinAuth();
             setTimeout(() => {
                 this.setState({
                     passcode: [],
@@ -29,19 +34,20 @@ class Pin extends Component {
                     dot2: "dot",
                     dot3: "dot",
                     dot4: "dot"
-              })
+              });
+
             }, 500);
-        }
+        };
     };
 
 
     addTo = (e) => {
         let newArray = this.state.passcode;
-        newArray.push(e.currentTarget.dataset.id)
-        this.setState({ passcode: newArray })
-        console.log(this.state.passcode.length)
+        newArray.push(e.currentTarget.dataset.id);
+        this.setState({ passcode: newArray });
+        console.log(this.state.passcode.length);
 
-        this.checkPin()
+        this.checkPin();
     };
 
 

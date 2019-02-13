@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const numpad = props => {
     return (
         <div className="numbers">
