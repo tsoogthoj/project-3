@@ -6,24 +6,53 @@ import "./pin.css";
 
 class Pin extends Component {
     state = {
-        passcode: []
+        passcode: [],
+        dot1: "dot",
+        dot2: "dot",
+        dot3: "dot",
+        dot4: "dot"
     };
+
+    checkPin = () => {
+        if (this.state.passcode.length === 1) {
+            this.setState({ dot1: "dot white" })
+        } else if (this.state.passcode.length === 2) {
+            this.setState({ dot2: "dot white" })
+        } else if (this.state.passcode.length === 3) {
+            this.setState({ dot3: "dot white" })
+        } else if (this.state.passcode.length === 4) {
+            this.setState({ dot4: "dot white" })
+            setTimeout(() => {
+                this.setState({
+                    passcode: [],
+                    dot1: "dot",
+                    dot2: "dot",
+                    dot3: "dot",
+                    dot4: "dot"
+              })
+            }, 500);
+        }
+    };
+
 
     addTo = (e) => {
         let newArray = this.state.passcode;
         newArray.push(e.currentTarget.dataset.id)
-        this.setState( {passcode: newArray})
-        console.log(this.state.passcode)
+        this.setState({ passcode: newArray })
+        console.log(this.state.passcode.length)
+
+        this.checkPin()
     };
+
 
     render() {
         return (
             <div id="pin">
                 <div className="dots">
-                    <div className="dot dot1"></div>
-                    <div className="dot dot2"></div>
-                    <div className="dot dot3"></div>
-                    <div className="dot dot4"></div>
+                    <div className={this.state.dot1}></div>
+                    <div className={this.state.dot2}></div>
+                    <div className={this.state.dot3}></div>
+                    <div className={this.state.dot4}></div>
                 </div>
                 <br></br>
                 <p>Enter Your Pin</p>
