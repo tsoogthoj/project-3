@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Numpad from "../components/Numpad/numpad"
+import moment from "moment";
 
 import "./pin.css";
 
@@ -10,11 +11,14 @@ class Pin extends Component {
         dot1: "dot",
         dot2: "dot",
         dot3: "dot",
-        dot4: "dot"
+        dot4: "dot",
+        currentTime: ""
     };
     
     checkPinAuth = () => {
-
+        const time = moment().valueOf();
+        console.log(time);
+        this.setState({ currentTime: time });
     };
 
     checkPin = () => {
@@ -33,7 +37,8 @@ class Pin extends Component {
                     dot1: "dot",
                     dot2: "dot",
                     dot3: "dot",
-                    dot4: "dot"
+                    dot4: "dot",
+                    currentTime: ""
               });
 
             }, 500);
