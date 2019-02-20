@@ -14,7 +14,7 @@ class Pin extends Component {
         dot4: "dot",
         currentTime: ""
     };
-    
+
     checkPinAuth = () => {
         const time = moment().valueOf();
         console.log(time);
@@ -39,7 +39,7 @@ class Pin extends Component {
                     dot3: "dot",
                     dot4: "dot",
                     currentTime: ""
-              });
+                });
 
             }, 500);
         };
@@ -58,16 +58,18 @@ class Pin extends Component {
 
     render() {
         return (
-            <div id="pin">
-                <div className="dots">
-                    <div className={this.state.dot1}></div>
-                    <div className={this.state.dot2}></div>
-                    <div className={this.state.dot3}></div>
-                    <div className={this.state.dot4}></div>
+            <div className="pinContainer">
+                <div id="pin">
+                    <div className="dots">
+                        <div className={this.state.dot1}></div>
+                        <div className={this.state.dot2}></div>
+                        <div className={this.state.dot3}></div>
+                        <div className={this.state.dot4}></div>
+                    </div>
+                    <br></br>
+                    <p>Enter Your Pin</p>
+                    <Numpad click={this.addTo} />
                 </div>
-                <br></br>
-                <p>Enter Your Pin</p>
-                <Numpad click={this.addTo} />
             </div>
         )
     }

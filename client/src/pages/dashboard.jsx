@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 import Toolbar from "../components/Toolbar/Toolbar";
 import SideDrawer from "../components/SideDrawer/SideDrawer";
-import Backdrop from "../components/Backdrop/Backdrop"
+import Backdrop from "../components/Backdrop/Backdrop";
+import ContentContainer from "../components/ContentContainer/ContentContainer";
 
 class Dashboard extends Component {
   state = {
-    sideDrawerOpen: false
+    sideDrawerOpen: false,
+    displayContent: ""
   };
 
   drawerToggleClickHandler = () => {
@@ -19,6 +21,10 @@ class Dashboard extends Component {
     this.setState({sideDrawerOpen: false})
   };
 
+  displayContent = () => {
+
+  }
+
   render() {
     let backdrop;
 
@@ -28,10 +34,13 @@ class Dashboard extends Component {
 
     return (
       <div style={{height: '100%'}}>
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
+        <Toolbar 
+        drawerClickHandler={this.drawerToggleClickHandler} 
+        displayContent={this.displayContent}
+        />
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
-        <p>This is the page content!</p>
+        <ContentContainer />
       </div>
     );
   }
