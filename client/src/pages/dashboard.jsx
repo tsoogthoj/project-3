@@ -7,11 +7,12 @@ import "./dashboard.css";
 
 // content
 import StaffTable from "../components/StaffTable/StaffTable";
+import TimeSheet from "../components/TimeSheet/TimeSheet"
 
 class Dashboard extends Component {
   state = {
     sideDrawerOpen: false,
-    displayContent: "products",
+    displayContent: "timeSheet",
   };
 
   drawerToggleClickHandler = () => {
@@ -25,7 +26,7 @@ class Dashboard extends Component {
   };
 
   displayContent = (e) => {
-    console.log(e.currentTarget.dataset.id)
+    this.setState({ displayContent: e.currentTarget.dataset.id})
   }
 
   render() {
@@ -47,7 +48,9 @@ class Dashboard extends Component {
         <div className="contentContainer">
           {active === 'products' ? (
             <StaffTable />
-          ) : null}
+          ) : active === "timeSheet" ? (
+            <TimeSheet />
+          ): null}
         </div>
       </div>
     );

@@ -13,8 +13,8 @@ const toolbar = props => (
             <div className="spacer" />
             <div className="toolbar_navigation-items">
                 <ul>
-                    <li onClick={props.displayContent} data-id="products">Products</li>
-                    <li onClick={props.displayContent} data-id="users">Users</li>
+                    <li onClick={props.displayContent} data-id="staff">Staff</li>
+                    <li onClick={props.displayContent} data-id="timeSheet">Time Sheets</li>
                     <li><a href="/pin">Pin</a></li>
                 </ul>
             </div>

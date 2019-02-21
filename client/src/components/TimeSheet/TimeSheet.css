@@ -1,0 +1,86 @@
+.timeClockSheetWrapper {
+    scroll-behavior: smooth;
+    font-size: 110%;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+/* calendar styles */
+.timeSheetToolbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navBtn {
+    display: flex;
+    width: 280px;
+}
+
+#todayBtn {
+    margin-right: 5%;
+}
+
+.navBtn {
+    font-size: 23px;
+}
+
+button {
+    height: 50px;
+}
+#leftArrowBtn, #rightArrowBtn {
+    padding: 2px;
+    width: 50px;
+}
+
+
+#nav-staff {
+    display: none;
+}
+
+.sticky {
+    position: sticky;
+    white-space: nowrap;
+    top: 0;
+    width: 100%;
+
+}
+
+#nav-tab {
+    padding-top: 2%;
+    padding-left: 2%;
+    background-color: #212121;
+    z-index: 2;
+}
+
+#nav-tabContent {
+    z-index: 2;
+}
+
+#nav-timeClockSheet {
+    padding: 2%;
+}
+
+#nav-add {
+    padding-top: 2%;
+}
+
+/* display times in data */
+.content {
+    display: flex;
+}
+
+th {
+    width: 1000px;
+}
+
+.timeDisplay {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+table, th, td, tr, thead {
+    flex-wrap: nowrap;
+}
