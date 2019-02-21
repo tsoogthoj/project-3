@@ -46,7 +46,7 @@ class Dashboard extends Component {
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
         <div className="contentContainer">
-          {active === 'products' ? (
+          {active === 'staff' ? (
             <StaffTable />
           ) : active === "timeSheet" ? (
             <TimeSheet />

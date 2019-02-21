@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import moment from "moment";
 
+import StaffTime from "../TimeSheet/StaffTime"
+
 import "./TimeSheet.css";
 class TimeSheet extends Component {
     state = {
@@ -82,7 +84,7 @@ class TimeSheet extends Component {
 
     increaseDays = (weekArray, daysInMonth) => {
         let startingDay = 1;
-        
+
         for (let i = 0; i < 5; i++) {
             weekArray[i]['day'] = weekArray[0]['day'] + i
             weekArray[i]['month'] = weekArray[0]['month']
@@ -206,7 +208,7 @@ class TimeSheet extends Component {
             weekArray[i]["year"] = this.state.daysOfWeek[i]["year"]
         }
         let daysInMonth = moment(weekArray[0]['year'] + '-' + weekArray[0]["month"]).daysInMonth()
-        
+
         weekArray[0]['day'] = weekArray[0]['day'] + 7
 
         if (parseInt(weekArray[0]['day']) > daysInMonth) {
@@ -256,7 +258,7 @@ class TimeSheet extends Component {
                                     </tr>
                                 </thead>
                                 <tbody className="tableContent">
-
+                                    <StaffTime />
                                 </tbody>
                             </table>
                         </div>

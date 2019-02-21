@@ -15,6 +15,7 @@ class Login extends Component {
         });
       }
 
+
       handleFormSubmit = event => {
         event.preventDefault();
         console.log(this.state)
@@ -28,9 +29,6 @@ class Login extends Component {
                     handleChange={this.handleChange}
                     handleFormSubmit={this.handleFormSubmit} 
                     />
-                    <div id="formFooter">
-                        <a className="underlineHover" href="/">Forgot Password?</a>
-                    </div> 
                 </div>
             </div>
         )

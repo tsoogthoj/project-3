@@ -1,15 +1,11 @@
-'use strict';
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-module.exports = (sequelize, DataTypes) => {
-  const TimeSheet = sequelize.define('TimeSheet', {
-    time: DataTypes.INTEGER,
-  }, {});
-  TimeSheet.associate = function(models) {
-    TimeSheet.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    })
-  };
-  return TimeSheet;
-};
+const timeSheet = new Schema({
+  id: { type: String, required: true },
+  time: { type: String }
+});
+
+const TimeSheet = mongoose.model("TimeSheet", timeSheet);
+
+module.exports = TimeSheet;
