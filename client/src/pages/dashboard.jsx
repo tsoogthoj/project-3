@@ -7,12 +7,18 @@ import "./dashboard.css";
 
 // content
 import StaffTable from "../components/StaffTable/StaffTable";
-import TimeSheet from "../components/TimeSheet/TimeSheet"
+import TimeSheet from "../components/TimeSheet/TimeSheet";
+import AddStaff from "../components/StaffTable/addStaff"
 
 class Dashboard extends Component {
   state = {
     sideDrawerOpen: false,
-    displayContent: "timeSheet",
+    displayContent: "staff",
+    firstName: "",
+    lastName: "",
+    pinNumber: "",
+    userName: "",
+    password: "",
   };
 
   drawerToggleClickHandler = () => {
@@ -26,8 +32,17 @@ class Dashboard extends Component {
   };
 
   displayContent = (e) => {
-    this.setState({ displayContent: e.currentTarget.dataset.id})
+    this.setState({ displayContent: e.currentTarget.dataset.id })
   }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+  handleFormSubmit = event => {
+    event.preventDefault();
+}
 
   render() {
     let backdrop;
@@ -47,10 +62,17 @@ class Dashboard extends Component {
         {backdrop}
         <div className="contentContainer">
           {active === 'staff' ? (
-            <StaffTable />
+            <StaffTable
+              displayContent={this.displayContent}
+            />
           ) : active === "timeSheet" ? (
             <TimeSheet />
-          ): null}
+          ) : active === "addStaff" ? (
+            <AddStaff
+              handleChange={this.handleChange}
+              handleFormSubmit={this.handleFormSubmit}
+            />
+          ) : null}
         </div>
       </div>
     );

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import LoginForm from "../components/loginForm/loginForm"
+import LoginForm from "../components/loginForm/loginForm";
+import API from "../utils/api";
 
 import "./login.css";
+
 
 class Login extends Component {
     state = {
@@ -11,23 +13,28 @@ class Login extends Component {
 
     handleChange = event => {
         this.setState({
-          [event.target.id]: event.target.value
+            [event.target.id]: event.target.value
         });
-      }
+    }
 
 
-      handleFormSubmit = event => {
+    handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state)
-      }
+        this.getUsers()
+    }
+
+    getUsers = () => {
+        API.getUsers().then(res => console.log(res.data))
+        
+    }
 
     render() {
         return (
             <div className="wrapper">
                 <div className="formContent">
-                    <LoginForm 
-                    handleChange={this.handleChange}
-                    handleFormSubmit={this.handleFormSubmit} 
+                    <LoginForm
+                        handleChange={this.handleChange}
+                        handleFormSubmit={this.handleFormSubmit}
                     />
                 </div>
             </div>
