@@ -64,3 +64,19 @@
         margin-left: 0;
     }
 }
+
+li {
+    cursor: pointer;
+    color: white;
+}
+
+li:hover, li:active {
+    color: red;
+}
+a:link {
+    color: white;
+}
+
+a:hover, a:active {
+    color: red;
+}
