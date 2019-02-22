@@ -84,3 +84,7 @@ th {
 table, th, td, tr, thead {
     flex-wrap: nowrap;
 }
+
+.navDateRange {
+    font-size: 50px;
+}

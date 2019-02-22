@@ -51,7 +51,11 @@ class Pin extends Component {
         newArray.push(e.currentTarget.dataset.id);
         this.setState({ passcode: newArray });
         console.log(this.state.passcode.length);
-
+        // let pressed = () => {
+        //   e.currentTarget.className = "number white"
+        //   setTimeout(function(){ e.currentTarget.className = "number" }, 500); 
+        // }
+        // pressed()
         this.checkPin();
     };
 
