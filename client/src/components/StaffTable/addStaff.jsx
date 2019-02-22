@@ -24,7 +24,7 @@ const AddStaff = ({handleChange, handleFormSubmit}) => (
             name="pin"
             placeholder="Pin"
             pattern="\d*"
-            maxlength="4"
+            maxLength="4"
             onChange={handleChange}
             required />
         <input

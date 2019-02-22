@@ -8,17 +8,18 @@ import "./dashboard.css";
 // content
 import StaffTable from "../components/StaffTable/StaffTable";
 import TimeSheet from "../components/TimeSheet/TimeSheet";
-import AddStaff from "../components/StaffTable/addStaff"
+import AddStaff from "../components/StaffTable/addStaff";
+import API from "../utils/api";
 
 class Dashboard extends Component {
   state = {
     sideDrawerOpen: false,
     displayContent: "staff",
-    firstName: "",
-    lastName: "",
-    pinNumber: "",
-    userName: "",
-    password: "",
+    firstName: "Chong",
+    lastName: "Thao",
+    pinNumber: "1123",
+    userName: "tsoogthoj",
+    password: "tsoogthoj",
   };
 
   drawerToggleClickHandler = () => {
@@ -42,6 +43,13 @@ class Dashboard extends Component {
   }
   handleFormSubmit = event => {
     event.preventDefault();
+    API.saveUsers({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      pinNumber: this.state.pinNumber,
+      userName: this.state.userName,
+      password: this.state.password,
+    }, this.setState({ displayContent: "staff"}, console.log("added Staff")))
 }
 
   render() {
@@ -64,6 +72,7 @@ class Dashboard extends Component {
           {active === 'staff' ? (
             <StaffTable
               displayContent={this.displayContent}
+              staffList={this.state}
             />
           ) : active === "timeSheet" ? (
             <TimeSheet />

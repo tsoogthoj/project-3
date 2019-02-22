@@ -20,12 +20,11 @@ class Login extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.getUsers()
+        this.authUsers()
     }
 
-    getUsers = () => {
+    authUsers = () => {
         API.getUsers().then(res => console.log(res.data))
-        
     }
 
     render() {
