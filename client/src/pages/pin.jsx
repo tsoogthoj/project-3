@@ -17,7 +17,6 @@ class Pin extends Component {
 
     checkPinAuth = () => {
         const time = moment().valueOf();
-        console.log(time);
         this.setState({ currentTime: time });
     };
 
@@ -46,16 +45,11 @@ class Pin extends Component {
     };
 
 
+
     addTo = (e) => {
         let newArray = this.state.passcode;
         newArray.push(e.currentTarget.dataset.id);
         this.setState({ passcode: newArray });
-        console.log(this.state.passcode.length);
-        // let pressed = () => {
-        //   e.currentTarget.className = "number white"
-        //   setTimeout(function(){ e.currentTarget.className = "number" }, 500); 
-        // }
-        // pressed()
         this.checkPin();
     };
 
@@ -72,7 +66,10 @@ class Pin extends Component {
                     </div>
                     <br></br>
                     <p>Enter Your Pin</p>
-                    <Numpad click={this.addTo} />
+                    <Numpad
+                        click={this.addTo}
+                        parentState={this.state}
+                    />
                 </div>
             </div>
         )

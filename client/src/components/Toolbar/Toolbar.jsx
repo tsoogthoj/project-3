@@ -10,13 +10,11 @@ const toolbar = props => (
                 <DrawerToggleButton click={props.drawerClickHandler} />
             </div>
             <div className="toolbar_logo"><a href="/dashboard">Employee Time Management</a></div>
-            <div className="spacer" />
+
             <div className="toolbar_navigation-items">
-                <ul>
-                    <li onClick={props.displayContent} data-id="staff">Staff</li>
-                    <li onClick={props.displayContent} data-id="timeSheet">Time Sheets</li>
-                    <li><a href="/pin">Pin</a></li>
-                </ul>
+                <div onClick={props.displayContent} data-id="staff">Staff</div>
+                <div onClick={props.displayContent} data-id="timeSheet">Time Sheets</div>
+                <div><a href="/pin">Pin</a></div>
             </div>
         </nav>
     </header>

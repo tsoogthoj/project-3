@@ -72,3 +72,14 @@
     padding: 30px;
     border-radius: 50%;
   }
+
+  .clicked {
+    animation-name: click;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes click {
+    0%   {background: default;}
+    50%  {background: rgba(255, 255, 255, 0.308);}
+    100% {background: default;}
+  }
