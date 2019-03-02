@@ -12,8 +12,12 @@ const toolbar = props => (
             <div className="toolbar_logo"><a href="/dashboard">Employee Time Management</a></div>
 
             <div className="toolbar_navigation-items">
-                <div onClick={props.displayContent} data-id="staff">Staff</div>
-                <div onClick={props.displayContent} data-id="timeSheet">Time Sheets</div>
+                <div onClick={props.displayContent} data-id="staff">
+                Staff
+                </div>
+                <div onClick={props.displayContent} data-id="timeSheet">
+                Time Sheets
+                </div>
                 <div><a href="/pin">Pin</a></div>
             </div>
         </nav>

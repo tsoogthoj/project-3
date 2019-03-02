@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = function (sequelize, Datatypes) {
+  let timeSheet = sequelize.define("TimeSheet", {
+    time: Datatypes.TIME
+  })
+  timeSheet.associate = (models) => {
+    timeSheet.belongsTo(models.Users, {
+      foreignKey: "user_id"
+    })
+  }
 
-const timeSheet = new Schema({
-  id: { type: String, required: true },
-  time: { type: String }
-});
-
-const TimeSheet = mongoose.model("TimeSheet", timeSheet);
-
-module.exports = TimeSheet;
+  return timeSheet
+}

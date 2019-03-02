@@ -25,8 +25,9 @@
     "express-session": "^1.14.2",
     "if-env": "^1.0.4",
     "moment": "^2.24.0",
+    "mysql2": "^1.6.5",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "mongoose": "^5.3.16"
+    "sequelize": "^4.42.1"
   }
 }

@@ -1,14 +1,15 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = (sequelize, DataTypes) => {
+  let users = sequelize.define("Users", {
+    first_name: DataTypes.TEXT,
+    last_name: DataTypes.TEXT,
+    email: DataTypes.TEXT,
+    password: DataTypes.TEXT,
+    pin: DataTypes.INTEGER
+  })
 
-const users = new Schema({
-  firstName: { type: String },
-  lastName: { type: String },
-  pin: { type: String },
-  userName: { type: String, required: true },
-  password: { type: String, required: true }
-});
+  users.associate = (models) => {
+    users.hasMany(models.TimeSheet)
+  }
 
-const Users = mongoose.model("Users", users);
-
-module.exports = Users;
+  return users
+}
