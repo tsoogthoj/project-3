@@ -30,7 +30,7 @@
 }
 
 .sidebar_active {
-    cursor: pointer;
+    cursor: default !important;
     background: white;
     border-left: solid 5px #4B8BBF;
     border-right: none;

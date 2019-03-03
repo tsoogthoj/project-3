@@ -24,7 +24,7 @@ class Dashboard extends Component {
   };
 
   displayContent = (e) => {
-    this.setState({ displayContent: e.currentTarget.dataset.id }, console.log(this.state.displayContent))
+    this.setState({ displayContent: e.currentTarget.dataset.id })
   }
 
   drawerToggleClickHandler = () => {
