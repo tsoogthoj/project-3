@@ -9,10 +9,12 @@
 
 .sidebar_content_item {
     color: #4B8BBF;
+    background: #F7F7F7;
     padding-left: 1rem;
     height: 40px;
+    width: 100%;
     line-height: 40px;
-    vertical-align: middle;
+    text-align: left;
     border: solid 1px #E6E6E6;
     border-top: none;
 }
@@ -20,5 +22,16 @@
 .sidebar_content_item:hover {
     cursor: pointer;
     background: white;
-    border-left: solid 5px rgb(129, 212, 253);
+    border-left: solid 5px #4B8BBF;
+}
+
+.sidebar_content a {
+    text-decoration: none;
+}
+
+.sidebar_active {
+    cursor: pointer;
+    background: white;
+    border-left: solid 5px #4B8BBF;
+    border-right: none;
 }

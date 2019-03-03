@@ -64,7 +64,10 @@ class Dashboard extends Component {
         </div>
         <div className="dashboard_content">
           <div className="dashboard_sidebar">
-            <Sidebar displayContent={this.displayContent} />
+            <Sidebar 
+            displayContent={this.displayContent} 
+            active={this.state.displayContent}
+            />
           </div>
           <div className="dashboard_displayContent">
           {active === 'staff' ? (

@@ -9,16 +9,16 @@ class Sidebar extends Component {
         return (
             <header className="sidebar_wrapper">
                 <div className="sidebar_content">
-                    <div className="sidebar_content_item home" onClick={this.props.displayContent} data-id="home">
+                    <div className={this.props.active === "home" ? "sidebar_content_item sidebar_active" : "sidebar_content_item"} onClick={this.props.displayContent} data-id="home">
                         Home
                     </div>
-                    <div className="sidebar_content_item staff" onClick={this.props.displayContent} data-id="staff">
+                    <div className={this.props.active === "staff" ? "sidebar_content_item sidebar_active" : "sidebar_content_item"} onClick={this.props.displayContent} data-id="staff">
                         Staff
                     </div>
-                    <div className="sidebar_content_item time_sheets" onClick={this.props.displayContent} data-id="timeSheet">
+                    <div className={this.props.active === "timeSheet" ? "sidebar_content_item sidebar_active" : "sidebar_content_item"} onClick={this.props.displayContent} data-id="timeSheet">
                         Time Sheets
                     </div>
-                    <div className="sidebar_content_item pin" ><a href="/pin">Pin</a></div>
+                    <a className="sidebar_content_item" href="/pin" target="_blank">Pin</a>
                 </div>
             </header>
         )

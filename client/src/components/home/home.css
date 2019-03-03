@@ -14,12 +14,18 @@
 
 .home_header {
     width: 100%;
+    line-height: 25px;
     height: 25px;
     background: #F3F3F3;
+    padding-left: 1rem;
 }
 
 .home_section_child {
-    background: yellow;
     height: 400px;
     margin-bottom: 2%;
+    border: solid 1px #E6E6E6;
+}
+
+.home_body {
+    padding: 1rem;
 }
