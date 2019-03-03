@@ -13,7 +13,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Routes
-require("./routes/html-routes")
+require("./routes/html-routes")(app)
+require("./routes/staffs-routes")(app)
 
 let syncOptions = {
   force: false

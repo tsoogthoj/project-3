@@ -3,35 +3,28 @@ import React from "react";
 import "./addStaff.css";
 
 const AddStaff = ({handleChange, handleFormSubmit}) => (
-    <form className="wrapper">
+    <form className="wrapper form-group">
         <input
             type="text"
-            id="firstName"
-            name="firstName"
+            id="first_name"
+            name="first_name"
             placeholder="First Name"
             onChange={handleChange}
             required />
         <input
             type="text"
-            id="lastName"
-            name="lastName"
+            id="last_name"
+            name="last_name"
             placeholder="Last Name"
             onChange={handleChange}
             required />
         <input
             type="text"
             id="pinNumber"
-            name="pin"
+            name="pinNumber"
             placeholder="Pin"
             pattern="\d*"
             maxLength="4"
-            onChange={handleChange}
-            required />
-        <input
-            type="text"
-            id="userName"
-            name="userName"
-            placeholder="User Name"
             onChange={handleChange}
             required />
         <input

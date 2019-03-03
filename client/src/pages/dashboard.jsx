@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 
-import Toolbar from "../components/Toolbar/Toolbar";
-import SideDrawer from "../components/SideDrawer/SideDrawer";
-import Backdrop from "../components/Backdrop/Backdrop";
 import "./dashboard.css";
 
+
 // content
+import Header from "../components/header/header"
+import Sidebar from "../components/sidebar/sidebar"
 import StaffTable from "../components/StaffTable/StaffTable";
 import TimeSheet from "../components/TimeSheet/TimeSheet";
 import AddStaff from "../components/StaffTable/addStaff";
+import Home from "../components/home/home"
+
 import API from "../utils/api";
 
 class Dashboard extends Component {
   state = {
     sideDrawerOpen: false,
-    displayContent: "staff",
-    firstName: "Chong",
-    lastName: "Thao",
-    pinNumber: "1123",
-    userName: "tsoogthoj",
-    password: "tsoogthoj",
+    displayContent: "home",
+    first_name: "",
+    last_name: "",
+    pinNumber: "",
+    password: ""
   };
+
+  displayContent = (e) => {
+    this.setState({ displayContent: e.currentTarget.dataset.id }, console.log(this.state.displayContent))
+  }
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -32,43 +37,36 @@ class Dashboard extends Component {
     this.setState({ sideDrawerOpen: false })
   };
 
-  displayContent = (e) => {
-    this.setState({ displayContent: e.currentTarget.dataset.id })
-  }
 
   handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value
-    });
+    }, console.log(this.state));
   }
+
   handleFormSubmit = event => {
     event.preventDefault();
     API.saveUsers({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      pinNumber: this.state.pinNumber,
-      userName: this.state.userName,
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      pin: this.state.pinNumber,
       password: this.state.password,
-    }, this.setState({ displayContent: "staff"}, console.log("added Staff")))
-}
+    }, this.setState({ displayContent: "staff" }, console.log("added Staff")))
+  }
 
   render() {
-    let backdrop;
-    let active = this.state.displayContent;
-
-    if (this.state.sideDrawerOpen) {
-      backdrop = <Backdrop click={this.backdropCLickHandler} />;
-    }
+    let active = this.state.displayContent
 
     return (
-      <div style={{ height: '100%' }}>
-        <Toolbar
-          drawerClickHandler={this.drawerToggleClickHandler}
-          displayContent={this.displayContent}
-        />
-        <SideDrawer show={this.state.sideDrawerOpen} />
-        {backdrop}
-        <div className="contentContainer">
+      <div className="dashboard">
+        <div className="dashboard_nav">
+          <Header />
+        </div>
+        <div className="dashboard_content">
+          <div className="dashboard_sidebar">
+            <Sidebar displayContent={this.displayContent} />
+          </div>
+          <div className="dashboard_displayContent">
           {active === 'staff' ? (
             <StaffTable
               displayContent={this.displayContent}
@@ -81,7 +79,10 @@ class Dashboard extends Component {
               handleChange={this.handleChange}
               handleFormSubmit={this.handleFormSubmit}
             />
-          ) : null}
+          ) : active === "home" ? (
+            <Home />
+          ): null}
+          </div>
         </div>
       </div>
     );

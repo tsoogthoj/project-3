@@ -1,10 +1,27 @@
-.contentContainer {
-    margin: 5%;
-    margin-top: 60px;
+.dashboard {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
-@media (min-width: 769px) {
-    .contentContainer {
-        margin-left: 160px;
-    }
+.dashboard_nav {
+    width: 100%;
+    height: 60px;
+}
+
+.dashboard_content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.dashboard_sidebar {
+    width: 200px;
+    height: 100%;
+}
+
+.dashboard_displayContent {
+    padding: 2rem;
+    padding-top: 1rem;
+    width: 100%;
 }

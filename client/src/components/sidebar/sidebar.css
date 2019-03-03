@@ -1,0 +1,24 @@
+.sidebar_wrapper {
+    height: 100%;
+    background: #F6F6F6;
+}
+
+.sidebar_content {
+    height: 100%;
+}
+
+.sidebar_content_item {
+    color: #4B8BBF;
+    padding-left: 1rem;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    border: solid 1px #E6E6E6;
+    border-top: none;
+}
+
+.sidebar_content_item:hover {
+    cursor: pointer;
+    background: white;
+    border-left: solid 5px rgb(129, 212, 253);
+}

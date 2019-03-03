@@ -3,8 +3,8 @@ module.exports = function (sequelize, Datatypes) {
     time: Datatypes.TIME
   })
   timeSheet.associate = (models) => {
-    timeSheet.belongsTo(models.Users, {
-      foreignKey: "user_id"
+    timeSheet.belongsTo(models.Staffs, {
+      foreignKey: "staff_id"
     })
   }
 
