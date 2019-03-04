@@ -6,8 +6,8 @@ import "./dashboard.css";
 // content
 import Header from "../components/header/header"
 import Sidebar from "../components/sidebar/sidebar"
-import StaffTable from "../components/StaffTable/StaffTable";
-// import TimeSheet from "../components/TimeSheet/TimeSheet";
+import Staff from "../components/staff/staff";
+import TimeSheet from "../components/TimeSheet/TimeSheet";
 // import AddStaff from "../components/StaffTable/addStaff";
 import Home from "../components/home/home"
 import AddStaff from "../components/addStaff/addstaff"
@@ -16,8 +16,8 @@ import API from "../utils/api";
 
 class Dashboard extends Component {
   state = {
-    sideDrawerOpen: false,
-    displayContent: "home",
+    modalActive: false,
+    displayContent: "staff",
     first_name: "",
     last_name: "",
     pinNumber: "",
@@ -26,6 +26,15 @@ class Dashboard extends Component {
 
   displayContent = (e) => {
     this.setState({ displayContent: e.currentTarget.dataset.id })
+  }
+
+  modalActive = () => {
+    if (this.state.modalActive) {
+      this.setState({ modalActive: false })
+    } else {
+      this.setState({ modalActive: true })
+    }
+
   }
 
   drawerToggleClickHandler = () => {
@@ -59,35 +68,35 @@ class Dashboard extends Component {
     let active = this.state.displayContent
 
     return (
-      <div className="dashboard">
-        <div className="dashboard_nav">
-          <Header />
-        </div>
-        <div className="dashboard_content">
-          <div className="dashboard_sidebar">
-            <Sidebar 
-            displayContent={this.displayContent} 
-            active={this.state.displayContent}
-            />
+      <div className="dashboard_wrapper">
+        <div className="modalActive">
+          <div className="dashboard_nav">
+            <Header />
           </div>
-          <div className="dashboard_displayContent">
-          {active === 'staff' ? (
-            <StaffTable
-              displayContent={this.displayContent}
-              staffList={this.state}
-            />
-          ) : active === "timeSheet" ? (
-            <AddStaff />
-            // <TimeSheet />
-          ) : active === "addStaff" ? (
+          <div className="dashboard_content">
+            <div className="dashboard_sidebar">
+              <Sidebar
+                displayContent={this.displayContent}
+                active={this.state.displayContent}
+              />
+            </div>
+            <div className="dashboard_displayContent">
+              {active === 'staff' ? (
+                <Staff
+                  modalActive={this.modalActive}
+                />
+              ) : active === "timeSheet" ? (
+                <TimeSheet />
+              ) : active === "addStaff" ? (
 
-            <AddStaff
-              handleChange={this.handleChange}
-              handleFormSubmit={this.handleFormSubmit}
-            />
-          ) : active === "home" ? (
-            <Home />
-          ): null}
+                <AddStaff
+                  handleChange={this.handleChange}
+                  handleFormSubmit={this.handleFormSubmit}
+                />
+              ) : active === "home" ? (
+                <Home />
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

@@ -22,7 +22,6 @@
 .sidebar_content_item:hover {
     cursor: pointer;
     background: white;
-    border-left: solid 5px #4B8BBF;
 }
 
 .sidebar_content a {
