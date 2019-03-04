@@ -18,7 +18,7 @@ class Sidebar extends Component {
                     <div className={this.props.active === "timeSheet" ? "sidebar_content_item sidebar_active" : "sidebar_content_item"} onClick={this.props.displayContent} data-id="timeSheet">
                         Time Sheets
                     </div>
-                    <a className="sidebar_content_item" href="/pin" target="_blank">Pin</a>
+                    <a className="sidebar_content_item" href="/pin" target="_blank">Time Clock</a>
                 </div>
             </header>
         )

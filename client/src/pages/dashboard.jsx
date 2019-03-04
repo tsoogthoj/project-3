@@ -7,9 +7,10 @@ import "./dashboard.css";
 import Header from "../components/header/header"
 import Sidebar from "../components/sidebar/sidebar"
 import StaffTable from "../components/StaffTable/StaffTable";
-import TimeSheet from "../components/TimeSheet/TimeSheet";
-import AddStaff from "../components/StaffTable/addStaff";
+// import TimeSheet from "../components/TimeSheet/TimeSheet";
+// import AddStaff from "../components/StaffTable/addStaff";
 import Home from "../components/home/home"
+import AddStaff from "../components/addStaff/addstaff"
 
 import API from "../utils/api";
 
@@ -76,8 +77,10 @@ class Dashboard extends Component {
               staffList={this.state}
             />
           ) : active === "timeSheet" ? (
-            <TimeSheet />
+            <AddStaff />
+            // <TimeSheet />
           ) : active === "addStaff" ? (
+
             <AddStaff
               handleChange={this.handleChange}
               handleFormSubmit={this.handleFormSubmit}
