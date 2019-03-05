@@ -1,0 +1,8 @@
+.modal_wrapper {
+    background: white;
+    position: fixed;
+    margin: 0 auto;
+    width: 70%;
+    padding: 1rem;
+    z-index: 100;
+}

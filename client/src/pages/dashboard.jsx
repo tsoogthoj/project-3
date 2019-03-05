@@ -8,15 +8,19 @@ import Header from "../components/header/header"
 import Sidebar from "../components/sidebar/sidebar"
 import Staff from "../components/staff/staff";
 import TimeSheet from "../components/TimeSheet/TimeSheet";
-// import AddStaff from "../components/StaffTable/addStaff";
 import Home from "../components/home/home"
-import AddStaff from "../components/addStaff/addstaff"
+import Modal from "../components/modal/modal"
+
+
+
+
 
 import API from "../utils/api";
 
 class Dashboard extends Component {
   state = {
     modalActive: false,
+    modalContent: "",
     displayContent: "staff",
     first_name: "",
     last_name: "",
@@ -28,13 +32,13 @@ class Dashboard extends Component {
     this.setState({ displayContent: e.currentTarget.dataset.id })
   }
 
-  modalActive = () => {
+  modalActive = (event) => {
     if (this.state.modalActive) {
       this.setState({ modalActive: false })
     } else {
       this.setState({ modalActive: true })
     }
-
+    this.setState({modalContent: event.currentTarget.dataset.id}) 
   }
 
   drawerToggleClickHandler = () => {
@@ -69,7 +73,6 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard_wrapper">
-        <div className="modalActive">
           <div className="dashboard_nav">
             <Header />
           </div>
@@ -81,25 +84,26 @@ class Dashboard extends Component {
               />
             </div>
             <div className="dashboard_displayContent">
+
+              <div className={this.state.modalActive ? "modalActive" : ""} />
               {active === 'staff' ? (
                 <Staff
                   modalActive={this.modalActive}
                 />
               ) : active === "timeSheet" ? (
                 <TimeSheet />
-              ) : active === "addStaff" ? (
-
-                <AddStaff
-                  handleChange={this.handleChange}
-                  handleFormSubmit={this.handleFormSubmit}
-                />
               ) : active === "home" ? (
                 <Home />
               ) : null}
+
+              <div className="modalContent">
+                <Modal 
+                  modalContent = {this.state.modalContent}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }

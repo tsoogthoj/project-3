@@ -2,29 +2,26 @@
     height: 100vh;
     width: 100%;
     overflow: hidden;
-}
-.modalActive {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background: black;
-    z-index: 1;
+    z-index: 10;
 }
 .dashboard_nav {
     width: 100%;
     height: 60px;
     border-bottom: solid 1px #E6E6E6;
+    z-index: 10;
 }
 
 .dashboard_content {
     display: flex;
     height: 100%;
     width: 100%;
+    z-index: 10;
 }
 
 .dashboard_sidebar {
     width: 200px;
     height: 100%;
+    z-index: 10;
 }
 
 .dashboard_displayContent {
@@ -32,4 +29,16 @@
     padding-top: 1rem;
     width: 100%;
     overflow-y: auto;
+    z-index: 10;
+}
+
+.modalActive {
+    position: fixed;
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
 }
