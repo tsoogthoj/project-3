@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "./addstaff.css"
+
 class AddStaff extends Component {
 
     render() {
@@ -9,21 +10,34 @@ class AddStaff extends Component {
                 <form>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" className="form-control" id="inputEmail4" placeholder="Email" />
+                            <label for="inputFirstName">First Name</label>
+                            <input type="text" className="form-control" id="inputFirstName" />
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label for="inputLastName">Last Name</label>
+                            <input type="text" className="form-control" id="inputLastName" />
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group col-md-2">
+                            <label for="pinNumber">Pin</label>
+                            <input type="number" className="form-control" id="pinNumber" />
                         </div>
                         <div className="form-group col-md-6">
                             <label for="inputPassword4">Password</label>
-                            <input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
+                            <input type="password" className="form-control" id="inputPassword4" />
+                        </div>
+                        <div className="form-group col-md-4">
+                            <label for="jobTitle">Title</label>
+                            <select class="form-control" id="jobTitle">
+                                <option>Admin</option>
+                                <option>Staff</option>
+                            </select>
                         </div>
                     </div>
                     <div className="form-group">
                         <label for="inputAddress">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                    </div>
-                    <div className="form-group">
-                        <label for="inputAddress2">Address 2</label>
-                        <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+                        <input type="text" className="form-control" id="inputAddress" />
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
@@ -32,23 +46,17 @@ class AddStaff extends Component {
                         </div>
                         <div className="form-group col-md-4">
                             <label for="inputState">State</label>
-                            <select id="inputState" className="form-control" >
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
+                            <input type="text" className="form-control" id="inputState" />
                         </div>
                         <div className="form-group col-md-2">
                             <label for="inputZip">Zip</label>
                             <input type="text" className="form-control" id="inputZip" />
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" id="gridCheck" />
-                            <label className="form-check-label" for="gridCheck">Check me out</label>
-                        </div>
+                    <div className="form-row">
+                        <button type="submit" className="btn btn-primary addStaffBtn">Add Staff</button>
+                        <button className="btn btn-danger cancelBtn">Cancel</button>
                     </div>
-                    <button type="submit" className="btn btn-primary">Sign in</button>
                 </form>
             </div >
         )
