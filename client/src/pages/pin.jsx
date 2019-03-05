@@ -39,7 +39,6 @@ class Pin extends Component {
                     dot4: "dot",
                     currentTime: ""
                 });
-
             }, 500);
         };
     };
@@ -52,7 +51,6 @@ class Pin extends Component {
         this.setState({ passcode: newArray });
         this.checkPin();
     };
-
 
     render() {
         return (

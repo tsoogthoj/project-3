@@ -1,9 +1,11 @@
 .pinContainer {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 1s linear;
+    overflow: hidden;
   }
   
   .wrong {
