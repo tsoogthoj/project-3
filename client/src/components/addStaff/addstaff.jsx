@@ -1,8 +1,46 @@
 import React, { Component } from "react";
 
+
 import "./addstaff.css"
+import API from "../../utils/api"
 
 class AddStaff extends Component {
+    state = {
+        firstName: "",
+        lastName: "",
+        pinNumber: "",
+        password: "",
+        jobTitle: "Admin",
+        address: "",
+        city: "",
+        inputState: "",
+        zipCode: ""
+    }
+
+    addStaffToDatabase = (event) => {
+        event.preventDefault()
+        API.saveStaff({
+            first_name: this.state.firstName,
+            last_name: this.state.lastName,
+            street_address: this.state.address,
+            city: this.state.city,
+            state: this.state.inputState,
+            zip_code: this.state.zipCode,
+            password: this.state.password,
+            pin: this.state.pinNumber,
+            title: this.state.jobTitle
+        })
+    }
+
+    handleChange = event => {
+        this.setState({
+          [event.target.id]: event.target.value
+        }, console.log(this.state));
+      }
+
+    cancel = () => {
+
+    }
 
     render() {
         return (
@@ -10,52 +48,52 @@ class AddStaff extends Component {
                 <form>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label for="inputFirstName">First Name</label>
-                            <input type="text" className="form-control" id="inputFirstName" />
+                            <label htmlFor="firstName">First Name</label>
+                            <input type="text" className="form-control" id="firstName" onChange={this.handleChange}/>
                         </div>
                         <div className="form-group col-md-6">
-                            <label for="inputLastName">Last Name</label>
-                            <input type="text" className="form-control" id="inputLastName" />
+                            <label htmlFor="lastName">Last Name</label>
+                            <input type="text" className="form-control" id="lastName" onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-2">
-                            <label for="pinNumber">Pin</label>
-                            <input type="number" className="form-control" id="pinNumber" />
+                            <label htmlFor="pinNumber">Pin</label>
+                            <input type="number" className="form-control" id="pinNumber" onChange={this.handleChange}/>
                         </div>
                         <div className="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" className="form-control" id="inputPassword4" />
+                            <label htmlFor="password">Password</label>
+                            <input type="password" className="form-control" id="password" onChange={this.handleChange}/>
                         </div>
                         <div className="form-group col-md-4">
-                            <label for="jobTitle">Title</label>
-                            <select class="form-control" id="jobTitle">
+                            <label htmlFor="jobTitle">Title</label>
+                            <select className="form-control" id="jobTitle" onChange={this.handleChange}>
                                 <option>Admin</option>
                                 <option>Staff</option>
                             </select>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" />
+                        <label htmlFor="address">Address</label>
+                        <input type="text" className="form-control" id="address" onChange={this.handleChange}/>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" className="form-control" id="inputCity" />
+                            <label htmlFor="city">City</label>
+                            <input type="text" className="form-control" id="city" onChange={this.handleChange}/>
                         </div>
                         <div className="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <input type="text" className="form-control" id="inputState" />
+                            <label htmlFor="inputState">State</label>
+                            <input type="text" className="form-control" id="inputState" onChange={this.handleChange}/>
                         </div>
                         <div className="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" className="form-control" id="inputZip" />
+                            <label htmlFor="zipCode">Zip</label>
+                            <input type="text" className="form-control" id="zipCode" onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="form-row">
-                        <button type="submit" className="btn btn-primary addStaffBtn">Add Staff</button>
-                        <button className="btn btn-danger cancelBtn">Cancel</button>
+                        <button type="submit" className="btn btn-primary addStaffBtn" onClick={this.addStaffToDatabase}>Add Staff</button>
+                        <button className="btn btn-danger cancelBtn" onClick={this.cancel}>Cancel</button>
                     </div>
                 </form>
             </div >

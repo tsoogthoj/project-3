@@ -7,9 +7,11 @@ import "./modal.css"
 class Modal extends Component {
     render() {
         return (
-
-            <div className="modal_wrapper">
-                {this.props.modalContent === "addStaff" ? (<AddStaff />) : null}
+            <div className={this.props.modalActive ? "modal_wrapper" : ""}>
+                {this.props.modalContent === "addStaff" ? 
+                (<AddStaff 
+                modalActive = {this.props.modalActive}
+                />) : null}
             </div>
         )
     }

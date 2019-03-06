@@ -11,12 +11,6 @@ import TimeSheet from "../components/TimeSheet/TimeSheet";
 import Home from "../components/home/home"
 import Modal from "../components/modal/modal"
 
-
-
-
-
-import API from "../utils/api";
-
 class Dashboard extends Component {
   state = {
     modalActive: false,
@@ -58,16 +52,6 @@ class Dashboard extends Component {
     }, console.log(this.state));
   }
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    API.saveUsers({
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      pin: this.state.pinNumber,
-      password: this.state.password,
-    }, this.setState({ displayContent: "staff" }, console.log("added Staff")))
-  }
-
   render() {
     let active = this.state.displayContent
 
@@ -99,6 +83,7 @@ class Dashboard extends Component {
               <div className="modalContent">
                 <Modal 
                   modalContent = {this.state.modalContent}
+                  modalActive = {this.state.modalActive}
                 />
               </div>
             </div>

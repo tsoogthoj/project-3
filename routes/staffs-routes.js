@@ -2,14 +2,14 @@ let db = require("../models")
 
 module.exports = (app) => {
   app.get("/api/staff" , (req, res) => {
-    db.Staff.findAll({
+    db.Staffs.findAll({
     }).then(function(dbStaffs) {
       res.json(dbStaffs);
     });
   })
   
   app.get("/api/staff/:id", function(req, res) {
-    db.Staff.findOne({
+    db.Staffs.findOne({
       where: {
         id: req.params.id
       }
@@ -19,7 +19,7 @@ module.exports = (app) => {
   });
   
   app.post("/api/staff", function(req, res) {
-    db.Staff.create(req.body).then(function(dbStaffs) {
+    db.Staffs.create(req.body).then(function(dbStaffs) {
       res.json(dbStaffs);
     });
   });
