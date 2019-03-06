@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   // Gets staff
   getStaff: function() {
-    return axios.get("/api/staff");
+    return axios.get("/api/staff/");
   },
 
   // Deletes the saved staff with the given id

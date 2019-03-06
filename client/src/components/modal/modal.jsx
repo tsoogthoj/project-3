@@ -5,13 +5,14 @@ import AddStaff from "../addStaff/addstaff"
 
 import "./modal.css"
 class Modal extends Component {
+    
     render() {
         return (
             <div className={this.props.modalActive ? "modal_wrapper" : ""}>
-                {this.props.modalContent === "addStaff" ? 
-                (<AddStaff 
-                modalActive = {this.props.modalActive}
-                />) : null}
+                {this.props.modalContent === "addStaff" ?
+                    (<AddStaff
+                        modalActive={this.props.modalActive}
+                    />) : null}
             </div>
         )
     }

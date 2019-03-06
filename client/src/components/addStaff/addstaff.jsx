@@ -17,8 +17,7 @@ class AddStaff extends Component {
         zipCode: ""
     }
 
-    addStaffToDatabase = (event) => {
-        event.preventDefault()
+    addStaffToDatabase = () => {
         API.saveStaff({
             first_name: this.state.firstName,
             last_name: this.state.lastName,
@@ -35,12 +34,8 @@ class AddStaff extends Component {
     handleChange = event => {
         this.setState({
           [event.target.id]: event.target.value
-        }, console.log(this.state));
+        });
       }
-
-    cancel = () => {
-
-    }
 
     render() {
         return (
