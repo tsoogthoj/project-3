@@ -11,9 +11,5 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.TEXT
   })
 
-  staff.associate = (models) => {
-    staff.hasMany(models.TimeSheet)
-  }
-
   return staff
 }

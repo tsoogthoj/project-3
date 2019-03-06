@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
-import Numpad from "../components/Numpad/numpad"
+import Numpad from "../components/numpad/numpad"
 
 import moment from "moment";
-import API from "../utils/api"
+import StaffAPI from "../utils/staff-api"
+import TimeAPI from "../utils/time-api"
 
 import correct from "./pinAudio/correct.mp3"
 import wrong from "./pinAudio/wrong.mp3"
+import double from "./pinAudio/double.mp3"
 
 import "./pin.css";
 
@@ -16,7 +18,7 @@ class Pin extends Component {
         height: 0,
         staffsPin: [],
         passcode: [],
-        correct: 0,
+        correct: "",
         dot1: "dot",
         dot2: "dot",
         dot3: "dot",
@@ -40,7 +42,7 @@ class Pin extends Component {
 
 
     updateStaffsPin = () => {
-        API.getStaff().then(res => {
+        StaffAPI.getStaff().then(res => {
             let staffsPin = []
             for (let i = 0; i < res.data.length; i++) {
                 staffsPin.push(res.data[i].pin)
@@ -50,7 +52,6 @@ class Pin extends Component {
     }
 
     checkPinAuth = () => {
-        console.log(this.state.staffsPin)
         let passcode = this.state.passcode
         passcode = passcode.join("")
         let found = false
@@ -63,23 +64,39 @@ class Pin extends Component {
         }
 
         if (found) {
-            let correctSound = new Audio(correct)
-            correctSound.loop = false
-            correctSound.play()
-            this.setState({correct: true})
-            setTimeout(() => {
-				this.setState({correct: 0})
-			},500)
-            // eslint-disable-next-line
-            const time = moment().valueOf();
-
+            const time = moment().valueOf()
+            
+            TimeAPI.getTimePin(passcode).then(res => {
+                const lastPunched = res.data[res.data.length - 1].time
+                if ((time - lastPunched) < 60000) {
+                    let doubleSound = new Audio(double)
+                    doubleSound.loop = false
+                    doubleSound.play()
+                    this.setState({correct: "double"})
+                    setTimeout(() => {
+                        this.setState({correct: ""})
+                    },500)
+                } else {
+                    let correctSound = new Audio(correct)
+                    correctSound.loop = false
+                    correctSound.play()
+                    this.setState({correct: "correct"})
+                    setTimeout(() => {
+                        this.setState({correct: ""})
+                    },500)
+                    TimeAPI.saveTime({
+                        staffPin: passcode,
+                        time: time
+                    })
+                }
+            })
         } else {
             let wrongSound = new Audio(wrong)
             wrongSound.loop = false
             wrongSound.play()
-            this.setState({correct: false})
+            this.setState({correct: "wrong"})
             setTimeout(() => {
-				this.setState({correct: 0})
+				this.setState({correct: ""})
 			},500)
         }
 
@@ -101,8 +118,7 @@ class Pin extends Component {
                     dot1: "dot",
                     dot2: "dot",
                     dot3: "dot",
-                    dot4: "dot",
-                    currentTime: ""
+                    dot4: "dot"
                 });
             }, 500);
         };
@@ -123,8 +139,9 @@ class Pin extends Component {
         let width = this.state.height * .53
         return (
             <div className={"pinContainer "
-            + (this.state.correct ? "correct" : "")
-            + (this.state.correct === false ? "wrong" : "")
+            + (this.state.correct === "correct" ? "correct" : "")
+            + (this.state.correct === "double" ? "double" : "")
+            + (this.state.correct === "wrong" ? "wrong" : "")
             }>
                 <div id="pin" style={{
                     height: height,

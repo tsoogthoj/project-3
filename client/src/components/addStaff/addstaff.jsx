@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 
 import "./addstaff.css"
-import API from "../../utils/api"
+import StaffAPI from "../../utils/staff-api"
 
 class AddStaff extends Component {
     state = {
@@ -18,7 +18,7 @@ class AddStaff extends Component {
     }
 
     addStaffToDatabase = () => {
-        API.saveStaff({
+        StaffAPI.saveStaff({
             first_name: this.state.firstName,
             last_name: this.state.lastName,
             street_address: this.state.address,

@@ -15,6 +15,7 @@ if (process.env.NODE_ENV === "production") {
 // Routes
 require("./routes/html-routes")(app)
 require("./routes/staffs-routes")(app)
+require("./routes/time-routes")(app)
 
 let syncOptions = {
   force: false

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "../components/loginForm/loginForm";
-import API from "../utils/api";
+import StaffAPI from "../utils/staff-api"
 
 import "./login.css";
 
@@ -24,7 +24,7 @@ class Login extends Component {
     }
 
     authUsers = () => {
-        API.getUsers().then(res => console.log(res.data))
+        StaffAPI.getUsers().then(res => console.log(res.data))
     }
 
     render() {

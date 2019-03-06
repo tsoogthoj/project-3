@@ -17,7 +17,6 @@ class Numpad extends Component {
                 <div className="number" data-id="9" onClick={this.props.click}>9</div>
             </div>
         )
-
     }
 }
 

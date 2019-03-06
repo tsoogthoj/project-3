@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 
-import API from "../../utils/api"
+import StaffAPI from "../../utils/staff-api"
 
 import "./staffCard.css"
 import noPhoto from "./Nophoto.jpg"
@@ -10,7 +10,7 @@ class StaffCard extends Component {
         staff: []
     }
     componentDidMount() {
-        API.getStaff().then(res => {
+        StaffAPI.getStaff().then(res => {
             this.setState({ staff: res.data })
         })
     }
