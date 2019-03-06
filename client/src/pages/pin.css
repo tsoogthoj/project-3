@@ -1,11 +1,12 @@
 .pinContainer {
     height: 100%;
     width: 100%;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
     transition: background-color 1s linear;
-    overflow: hidden;
   }
   
   .wrong {
@@ -30,7 +31,8 @@
   }
   
   .dots {
-    width: 50%;
+    width: 95%;
+    height: 5%;
     display: flex;
     justify-content: space-around;
   }
@@ -39,8 +41,8 @@
     position: relative;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 10%;
+    height: 100%;
   }
   
   .white {
@@ -49,30 +51,30 @@
   }
 
   #pin p {
-    font-size: 20px;
+    font-size: 300%;
   }
   
   .numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     width: 90%;
-    height: 75%;
+    height: 85%;
   }
   
   .numbers:hover {
     cursor: pointer;
   }
-  
-  .row {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 45px;
-  }
-  
+
   .number {
+    display: flex;
+    font-size: 250%;
+    height: 25%;
+    width: 30%;
     border: 1px solid gray;
-    padding: 30px;
     border-radius: 50%;
+    justify-content: center;
+    align-items: center;
   }
 
   .clicked {

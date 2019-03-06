@@ -12,6 +12,8 @@ import "./pin.css";
 
 class Pin extends Component {
     state = {
+        width: 0,
+        height: 0,
         staffsPin: [],
         passcode: [],
         correct: 0,
@@ -22,9 +24,20 @@ class Pin extends Component {
         punchedTime: ""
     };
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.updateStaffsPin()
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
     }
+
+    componentWillUnmount = () => {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+      }
+      
+      updateWindowDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+      }
+
 
     updateStaffsPin = () => {
         API.getStaff().then(res => {
@@ -106,12 +119,17 @@ class Pin extends Component {
 
 
     render() {
+        let height = this.state.height * .95
+        let width = this.state.height * .53
         return (
             <div className={"pinContainer "
             + (this.state.correct ? "correct" : "")
             + (this.state.correct === false ? "wrong" : "")
             }>
-                <div id="pin">
+                <div id="pin" style={{
+                    height: height,
+                    width:  width
+                    }}>
                     <div className="dots">
                         <div className={this.state.dot1}></div>
                         <div className={this.state.dot2}></div>
