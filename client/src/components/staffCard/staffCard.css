@@ -1,8 +1,15 @@
 .staffCardWrapper {
     display: inline-flex;
+    flex-wrap: wrap;
 }
 
-/* .staffCard_card {
+.staffCard_card {
     border: solid 1px #E6E6E6;
-    width: 25%;
-} */
+    width: 40%;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+
+}

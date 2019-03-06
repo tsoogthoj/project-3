@@ -2,8 +2,9 @@ import React, { Component } from "react"
 
 
 import API from "../../utils/api"
-import "./staffCard.css"
 
+import "./staffCard.css"
+import noPhoto from "./Nophoto.jpg"
 class StaffCard extends Component {
     state = {
         staff: []
@@ -25,7 +26,7 @@ class StaffCard extends Component {
             <div className="staffCardWrapper">
                 {data.map(item => (
                     <div className="staffCard_card" key={item.id}>
-                        <img className="card-img-top" src="" alt="" />
+                        <img className="card-img-top" src={noPhoto} alt="" />
                         <div className="card-body">
                             <h6 className="card-title">{item.first_name} {item.last_name} </h6>
                         </div>
