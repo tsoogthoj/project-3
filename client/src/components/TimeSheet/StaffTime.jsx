@@ -4,6 +4,7 @@ import InOut from "./inOut"
 
 import StaffAPI from "../../utils/staff-api"
 import TimeAPI from "../../utils/time-api"
+import Moment from "moment"
 
 import "./staffTime.css";
 
@@ -39,7 +40,8 @@ class StaffTime extends Component {
                     })
                     let inArr = []
                     let outArr = []
-                    for (var i = 0; i < newTime.length; i++) {
+                    let totalArr = []
+                    for (let i = 0; i < newTime.length; i++) {
                         if ((i + 2) % 2 == 0) {
                             inArr.push(newTime[i]);
                         }
@@ -47,6 +49,12 @@ class StaffTime extends Component {
                             outArr.push(newTime[i]);
                         }
                     }
+                    for (let i = 0; i < outArr.length; i++) {
+                        totalArr.push(outArr[i].time - inArr[i].time)
+                    }
+                    console.log(inArr)
+                    console.log(outArr)
+                    console.log(totalArr)
                     return (
                         <tr key={item.id}>
                             <td className="staffName">{item.first_name} {item.last_name}</td>
@@ -58,7 +66,7 @@ class StaffTime extends Component {
                                             <td>
                                             {inArr.map(inItem => {
                                                 return (
-                                                    <div className="timeIn" key={inItem.id}>{inItem.time}</div>
+                                                    <div className="timeIn" key={inItem.id}>{Moment(parseInt(inItem.time)).format('hh:mm:ss a')}</div>
                                                 )
                                             })
                                             }
@@ -67,22 +75,28 @@ class StaffTime extends Component {
                                             <td>
                                             {outArr.map(outItem => {
                                                 return (
-                                                    <div className="timeIn" key={outItem.id}>{outItem.time}</div>
+                                                    <div className="timeOut" key={outItem.id}>{Moment(parseInt(outItem.time)).format('hh:mm:ss a')}</div>
                                                 )
                                             })
                                             }
-
                                             </td>
-                                            <td className="timeOut">Invalid date</td>
-                                            <td className="timeTotal">Invalid date</td>
+                                            <td>
+                                            {totalArr.map(totalItem => {
+                                                return (
+                                                    <div className="timeTotal" key={totalItem}>{Moment(parseInt(totalItem)).format('mm:ss')}</div>
+                                                )
+                                            })
+                                            }
+                                            </td>
+
                                         </tr>
                                     </tbody>
-                                    )
+                                    
                                 </table>
                             </td>
                         </tr>
-                    )
-                })}
+
+                )})}
             </tbody>
         )
     }

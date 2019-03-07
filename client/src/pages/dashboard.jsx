@@ -15,7 +15,7 @@ class Dashboard extends Component {
   state = {
     modalActive: false,
     modalContent: "",
-    displayContent: "timeSheet",
+    displayContent: "staff",
     first_name: "",
     last_name: "",
     pinNumber: "",

@@ -9,9 +9,9 @@ class Sidebar extends Component {
         return (
             <header className="sidebar_wrapper">
                 <div className="sidebar_content">
-                    <div className={this.props.active === "home" ? "sidebar_content_item sidebar_active" : "sidebar_content_item"} onClick={this.props.displayContent} data-id="home">
+                    {/* <div className={this.props.active === "home" ? "sidebar_content_item sidebar_active" : "sidebar_content_item"} onClick={this.props.displayContent} data-id="home">
                         Home
-                    </div>
+                    </div> */}
                     <div className={this.props.active === "staff" ? "sidebar_content_item sidebar_active" : "sidebar_content_item"} onClick={this.props.displayContent} data-id="staff">
                         Staff
                     </div>
