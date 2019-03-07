@@ -4,7 +4,7 @@ class InOut extends Component {
     render() {
         return (
             <thead>
-                <tr class="staffTimeHead">
+                <tr className="staffTimeHead">
                     <th>In</th>
                     <th>Out</th>
                     <th>Total</th>

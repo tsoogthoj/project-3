@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import moment from "moment";
 
-import StaffTime from "../TimeSheet/StaffTime"
+import StaffTime from "../timeSheet/staffTime"
 
-import "./TimeSheet.css";
+import "./timeSheet.css";
+
 class TimeSheet extends Component {
     state = {
         currentTime: moment(),
@@ -224,14 +225,10 @@ class TimeSheet extends Component {
             <div className="timeClockSheetWrapper">
                 <div id="nav-timeClockSheet">
                     <div className="timeSheetToolbar">
+                        <button type="button" id="arrowBtn" onClick={this.getCurrent}>Current Week</button>
+                        <button type="button" id="arrowBtn" onClick={this.goBack}>&#60;</button>
                         <div className="navDateRange">{this.state.daysOfWeek[0]["month"] + " " + this.state.daysOfWeek[0]["day"] + " - " + this.state.daysOfWeek[4]["day"] + ", " + this.state.year}</div>
-                        <div className="navBtn">
-                            <button type="button" id="todayBtn" onClick={this.getCurrent}>Current Week</button>
-                            <div>
-                                <button type="button" id="leftArrowBtn" onClick={this.goBack}>&#60;</button>
-                                <button type="button" id="rightArrowBtn" onClick={this.goForward}>&#62;</button>
-                            </div>
-                        </div>
+                        <button type="button" id="rightArrowBtn" onClick={this.goForward}>&#62;</button>
                     </div>
                     <br></br>
                     <div className="content">
@@ -257,9 +254,9 @@ class TimeSheet extends Component {
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody className="tableContent">
-                                    <StaffTime />
-                                </tbody>
+                                <StaffTime
+                                    daysOfWeek={this.state.daysOfWeek}
+                                />
                             </table>
                         </div>
                     </div>

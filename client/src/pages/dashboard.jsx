@@ -7,7 +7,7 @@ import "./dashboard.css";
 import Header from "../components/header/header"
 import Sidebar from "../components/sidebar/sidebar"
 import Staff from "../components/staff/staff";
-import TimeSheet from "../components/TimeSheet/TimeSheet";
+import TimeSheet from "../components/timeSheet/timeSheet";
 import Home from "../components/home/home"
 import Modal from "../components/modal/modal"
 
@@ -15,7 +15,7 @@ class Dashboard extends Component {
   state = {
     modalActive: false,
     modalContent: "",
-    displayContent: "home",
+    displayContent: "timeSheet",
     first_name: "",
     last_name: "",
     pinNumber: "",

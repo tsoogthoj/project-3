@@ -1,0 +1,8 @@
+.timeRow td {
+    vertical-align: top;
+}
+td div {
+    display: flex;
+    align-self: flex-start;
+    
+}

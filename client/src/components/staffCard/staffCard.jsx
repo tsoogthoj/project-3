@@ -28,7 +28,7 @@ class StaffCard extends Component {
                     <div className="staffCard_card" key={item.id}>
                         <img className="card-img-top" src={noPhoto} alt="" />
                         <div className="card-body">
-                            <h6 className="card-title">{item.first_name} {item.last_name} </h6>
+                            <h6 className="card-title">{item.first_name} {item.last_name}</h6>
                         </div>
                     </div>
                 ))}

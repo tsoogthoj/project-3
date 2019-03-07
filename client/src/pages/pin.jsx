@@ -64,18 +64,32 @@ class Pin extends Component {
         }
 
         if (found) {
-            const time = moment().valueOf()
+            const currentTime = moment().valueOf()
             
             TimeAPI.getTimePin(passcode).then(res => {
-                const lastPunched = res.data[res.data.length - 1].time
-                if ((time - lastPunched) < 60000) {
-                    let doubleSound = new Audio(double)
-                    doubleSound.loop = false
-                    doubleSound.play()
-                    this.setState({correct: "double"})
-                    setTimeout(() => {
-                        this.setState({correct: ""})
-                    },500)
+                if (res.data.length < 0) {
+                    const lastPunched = res.data[res.data.length - 1].time
+                    if ((currentTime - lastPunched) < 60000) {
+                        let doubleSound = new Audio(double)
+                        doubleSound.loop = false
+                        doubleSound.play()
+                        this.setState({correct: "double"})
+                        setTimeout(() => {
+                            this.setState({correct: ""})
+                        },500)
+                    } else {
+                        let correctSound = new Audio(correct)
+                        correctSound.loop = false
+                        correctSound.play()
+                        this.setState({correct: "correct"})
+                        setTimeout(() => {
+                            this.setState({correct: ""})
+                        },500)
+                        TimeAPI.saveTime({
+                            staffPin: passcode,
+                            time: currentTime
+                        })
+                    }
                 } else {
                     let correctSound = new Audio(correct)
                     correctSound.loop = false
@@ -86,9 +100,10 @@ class Pin extends Component {
                     },500)
                     TimeAPI.saveTime({
                         staffPin: passcode,
-                        time: time
+                        time: currentTime
                     })
                 }
+
             })
         } else {
             let wrongSound = new Audio(wrong)
