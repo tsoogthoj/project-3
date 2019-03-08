@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 
 class Numpad extends Component {
-
-
     render() {
         return (
             <div className="numbers">

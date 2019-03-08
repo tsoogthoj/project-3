@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from "moment";
 
-import StaffTime from "../timeSheet/staffTime"
+import StaffTime from "./staffTime"
 
 import "./timeSheet.css";
 

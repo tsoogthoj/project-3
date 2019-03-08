@@ -9,7 +9,7 @@ import TimeAPI from "../utils/time-api"
 import correct from "./pinAudio/correct.mp3"
 import wrong from "./pinAudio/wrong.mp3"
 import double from "./pinAudio/double.mp3"
-
+ 
 import "./pin.css";
 
 class Pin extends Component {
